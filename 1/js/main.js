@@ -70,8 +70,8 @@ define([
         passport.use("provider", googleStrategy);*/
 
         var myStrategy = new OAuth2Strategy({
-            authorizationURL: "http://localhost:3100/dialog/authorize",
-            tokenURL: "http://localhost:3100/oauth/token",
+            authorizationURL: "http://localhost:3100/user/authorize",
+            tokenURL: "http://localhost:3100/client/getToken",
             clientID: "abc123",
             clientSecret: "ssh-secret",
             callbackURL: "http://localhost:3000/auth/token"
@@ -120,7 +120,7 @@ define([
             ]
         }));*/
         app.get("/auth/code", passport.authenticate("provider", {
-            //approvalPrompt: "force",
+            approvalPrompt: "force",
             accessType: "offline",
             scope: [
                 "http://localhost:3100/api/userinfo",
